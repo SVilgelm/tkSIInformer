@@ -4,9 +4,9 @@
 """
 
 
-
 import settings
 import sqlite3
+
 
 conn = None
 _DB = None
@@ -193,6 +193,13 @@ class Author(DBObject):
 
     def __str__(self):
         return self.name
+
+    def url_fix(self):
+        """
+        Заменяет zhurnal.lib.ru на samlib.ru
+        """
+        self.url = self.url.replace('zhurnal.lib.ru', 'samlib.ru')
+        return self
 
 class Book(DBObject):
     """

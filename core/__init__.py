@@ -40,7 +40,7 @@ def check_author(author):
         if response.code == 200:
             html = response.read().decode('cp1251')
             m = RE_AUTHOR.findall(html)
-            name = m[0]
+            name = m[0] or 'unknown name'
             if name != author.name:
                 author.name = name
                 author.save()
@@ -83,7 +83,10 @@ def check_author(author):
 
 def check_all_authors():
     for author in models.Author.get():
-        yield check_author(author)
+        try:
+            yield check_author(author)
+        except Exception as e:
+            print('Chek author "{author:>s}". {error!r:s}'.format(author=author.name, error=e))
 
 
 def create_author(url):
@@ -97,7 +100,7 @@ def create_author(url):
             netloc=p.netloc,
             path='/'.join(paths)
         )
-        author = models.Author.get_by_url(url=url) or models.Author(url=url).save()
+        author = models.Author.get_by_url(url=url) or models.Author(url=url).url_fix().save()
         return check_author(author)
     return None
 
@@ -119,6 +122,12 @@ def delete_author(url):
 def book_read(book):
     book.is_new = 0
     book.save()
+
+
+def authors_urls_to_samlib():
+    for author in models.Author.get():
+        author.url_fix().save()
+
 
 
 class EventHook(object):
