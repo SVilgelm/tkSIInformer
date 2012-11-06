@@ -22,7 +22,7 @@ tkinter/ttk
 
 Из репозитория поставить python3
 
-    $ apt-get install python3
+    $ apt-get install python3 python3-tk
 
 
 Первый запуск
