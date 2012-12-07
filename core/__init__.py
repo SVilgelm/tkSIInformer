@@ -2,9 +2,10 @@
 """
 Основые функции и объекты системы
 """
+from core import models, socks
+import http.client
 import urllib.request
 import urllib.parse
-from core import models
 import settings
 import re
 
@@ -13,6 +14,7 @@ RE_AUTHOR = re.compile(r"""<body[^>]*>\s*<center>\s*<h3>(?P<author>.+?):<br>""",
 RE_BOOKS = re.compile(r"""^<dl><dt><li>(.+)</dl>$""", re.M | re.I)
 RE_BOOK = re.compile(r"""^.*?<a href=(?P<url>.+?)><b>(?P<name>.+?)</b></a> &nbsp; <b>(?P<size>.+?)</b> &nbsp; <small>.+?"(?P<list>.+?)".+?</small><br>(<dd><font color="#555555">(?P<desc>.+?)</font>)?.*""", re.I)
 RE_TAGS = re.compile(r"""<[^>]+>""", re.S)
+TRUE_TEXT = '<a href="/p/petrienko_p_w/">Связаться с программистом сайта</a>'
 
 
 def book_change(book, name, value, changes):
@@ -33,8 +35,19 @@ def check_author(author):
             urllib.request.HTTPCookieProcessor()
         )
         if settings.USE_PROXY:
-            p = urllib.parse.urlparse(settings.PROXY)
-            opener.add_handler(urllib.request.ProxyHandler({p.scheme: settings.PROXY}))
+            scheme, user, password, host_port = urllib.request._parse_proxy(settings.PROXY)
+            if scheme in ('socks', 'socks4', 'socks5'):
+                host, port = host_port.split(':')
+                socks.setdefaultproxy(
+                    proxytype=socks.PROXY_TYPE_SOCKS4 if scheme == 'socks4' else socks.PROXY_TYPE_SOCKS5,
+                    addr=host,
+                    port=int(port),
+                    username=user,
+                    password=password,
+                )
+                socks.wrapmodule(http.client)
+            else:
+                opener.add_handler(urllib.request.ProxyHandler({scheme: settings.PROXY}))
         request = urllib.request.Request(author.url + 'indexdate.shtml')
         response = opener.open(request)
         if response.code == 200:
