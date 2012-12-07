@@ -37,3 +37,8 @@ tkinter/ttk
     $ ./main.py
     
 
+Использование ssh прокси
+========================
+
+    $ ssh -D 8080 username@server
+    $ ./main.py -up socks5://localhost:8080
