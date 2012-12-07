@@ -14,8 +14,14 @@ RE_AUTHOR = re.compile(r"""<body[^>]*>\s*<center>\s*<h3>(?P<author>.+?):<br>""",
 RE_BOOKS = re.compile(r"""^<dl><dt><li>(.+)</dl>$""", re.M | re.I)
 RE_BOOK = re.compile(r"""^.*?<a href=(?P<url>.+?)><b>(?P<name>.+?)</b></a> &nbsp; <b>(?P<size>.+?)</b> &nbsp; <small>.+?"(?P<list>.+?)".+?</small><br>(<dd><font color="#555555">(?P<desc>.+?)</font>)?.*""", re.I)
 RE_TAGS = re.compile(r"""<[^>]+>""", re.S)
-TRUE_TEXT = '<a href="/p/petrienko_p_w/">Связаться с программистом сайта</a>'
-
+RE_URL = re.compile(
+    r'^https?://'
+    r'(?:(?:[A-Z0-9-]+\.)+[A-Z]{2,6}|'
+    r'localhost|'
+    r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})'
+    r'(?::\d+)?'
+    r'(?:/?|/\S+)$',
+    re.IGNORECASE)
 
 def book_change(book, name, value, changes):
     field = book.__getattribute__(name)
@@ -103,18 +109,21 @@ def check_all_authors():
 
 
 def create_author(url):
-    p = urllib.parse.urlparse(url, scheme='http', allow_fragments=True)
-    paths = [path for path in p.path.split('/') if path]
-    if paths:
-        if paths[-1].endswith('.shtml'):
-            paths.pop()
-        url = '{scheme:>s}://{netloc:>s}/{path:>s}/'.format(
-            scheme=p.scheme,
-            netloc=p.netloc,
-            path='/'.join(paths)
-        )
-        author = models.Author.get_by_url(url=url) or models.Author(url=url).url_fix().save()
-        return check_author(author)
+    if RE_URL.match(url):
+        p = urllib.parse.urlparse(url, scheme='http', allow_fragments=True)
+        paths = [path for path in p.path.split('/') if path]
+        if paths:
+            if paths[-1].endswith('.shtml'):
+                paths.pop()
+            url = '{scheme:>s}://{netloc:>s}/{path:>s}/'.format(
+                scheme=p.scheme,
+                netloc=p.netloc,
+                path='/'.join(paths)
+            )
+            author = models.Author.get_by_url(url=url) or models.Author(url=url).url_fix().save()
+            return check_author(author)
+    else:
+        raise urllib.request.URLError(url)
     return None
 
 def delete_author(url):
