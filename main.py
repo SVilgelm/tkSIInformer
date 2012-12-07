@@ -29,7 +29,7 @@ if __name__ == '__main__':
         exit()
 
     settings.DB = args.db
-    settings.USE_PROXY = args.use_proxy
+    settings.USE_PROXY = args.use_proxy or args.proxy is not None
     if settings.USE_PROXY and args.proxy:
         settings.PROXY = args.proxy
 
