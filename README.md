@@ -41,4 +41,4 @@ tkinter/ttk
 ========================
 
     $ ssh -D 8080 username@server
-    $ ./main.py -up socks5://localhost:8080
+    $ ./main.py -cup socks5://localhost:8080 -snew
