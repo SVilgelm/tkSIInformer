@@ -11,9 +11,16 @@ import re
 from xml.dom.minidom import parseString
 
 
-RE_AUTHOR = re.compile(r"""<body[^>]*>\s*<center>\s*<h3>(?P<author>.+?):<br>""", re.S)
-RE_BOOKS = re.compile(r"""^<dl><dt><li>(.+)</dl>$""", re.M | re.I)
-RE_BOOK = re.compile(r"""^.*?<a href=(?P<url>.+?)><b>(?P<name>.+?)</b></a> &nbsp; <b>(?P<size>.+?)</b> &nbsp; <small>.+?"(?P<list>.+?)".+?</small><br>(<dd><font color="#555555">(?P<desc>.+?)</font>)?.*""", re.I)
+RE_AUTHOR = re.compile(
+    r'<body[^>]*>\s*<center>\s*<h3>'
+    r'(?P<author>.+?):<br>',
+    re.S)
+RE_BOOKS = re.compile(r'^<dl><dt><li>(.+)</dl>$', re.M | re.I)
+RE_BOOK = re.compile(
+    r'^.*?<a href=(?P<url>.+?)><b>(?P<name>.+?)</b></a> &nbsp; '
+    r'<b>(?P<size>.+?)</b> &nbsp; <small>.+?"(?P<list>.+?)".+?</small><br>'
+    r'(<dd><font color="#555555">(?P<desc>.+?)</font>)?.*',
+    re.I)
 RE_TAGS = re.compile(r"""<[^>]+>""", re.S)
 RE_URL = re.compile(
     r'^https?://'
@@ -23,6 +30,7 @@ RE_URL = re.compile(
     r'(?::\d+)?'
     r'(?:/?|/\S+)$',
     re.IGNORECASE)
+
 
 def book_change(book, name, value, changes):
     field = book.__getattribute__(name)
@@ -42,11 +50,14 @@ def check_author(author):
             urllib.request.HTTPCookieProcessor()
         )
         if settings.USE_PROXY:
-            scheme, user, password, host_port = urllib.request._parse_proxy(settings.PROXY)
+            scheme, user, password, host_port = urllib.request._parse_proxy(
+                settings.PROXY
+            )
             if scheme in ('socks', 'socks4', 'socks5'):
                 host, port = host_port.split(':')
                 socks.setdefaultproxy(
-                    proxytype=socks.PROXY_TYPE_SOCKS4 if scheme == 'socks4' else socks.PROXY_TYPE_SOCKS5,
+                    proxytype=socks.PROXY_TYPE_SOCKS4 if scheme == 'socks4'
+                        else socks.PROXY_TYPE_SOCKS5,
                     addr=host,
                     port=int(port),
                     username=user,
@@ -54,7 +65,9 @@ def check_author(author):
                 )
                 socks.wrapmodule(http.client)
             else:
-                opener.add_handler(urllib.request.ProxyHandler({scheme: settings.PROXY}))
+                opener.add_handler(urllib.request.ProxyHandler({
+                    scheme: settings.PROXY
+                }))
         request = urllib.request.Request(author.url + 'indexdate.shtml')
         response = opener.open(request)
         if response.code == 200:
@@ -64,7 +77,9 @@ def check_author(author):
             if name != author.name:
                 author.name = name
                 author.save()
-            books = {book.url: book for book in models.Book.get_by_author(author)}
+            books = {book.url: book for book in models.Book.get_by_author(
+                author=author
+            )}
             for rbook in RE_BOOKS.findall(html):
                 m = RE_BOOK.match(rbook)
                 if m:
@@ -106,7 +121,10 @@ def check_all_authors():
         try:
             yield check_author(author)
         except Exception as e:
-            print('Chek author "{author:>s}". {error!r:s}'.format(author=author.name, error=e))
+            print('Chek author "{author:>s}". {error!r:s}'.format(
+                author=author.name,
+                error=e
+            ))
 
 
 def create_author(url):
@@ -121,11 +139,13 @@ def create_author(url):
                 netloc=p.netloc,
                 path='/'.join(paths)
             )
-            author = models.Author.get_by_url(url=url) or models.Author(url=url).url_fix().save()
+            author = models.Author.get_by_url(url=url) \
+                or models.Author(url=url).url_fix().save()
             return check_author(author)
     else:
         raise urllib.request.URLError(url)
     return None
+
 
 def delete_author(url):
     p = urllib.parse.urlparse(url, allow_fragments=True)
@@ -148,9 +168,11 @@ def import_from_xml(filename):
         text = f.read().decode('utf-8', errors='ignore').strip("\0\n \t")
         dom = parseString(text)
         for a in dom.getElementsByTagName('Author'):
-            create_author(a.getElementsByTagName('URL')[0].firstChild.nodeValue)
+            create_author(a.getElementsByTagName('URL')
+                [0].firstChild.nodeValue)
     finally:
         f.close()
+
 
 def book_read(book):
     book.is_new = 0
@@ -160,7 +182,6 @@ def book_read(book):
 def authors_urls_to_samlib():
     for author in models.Author.get():
         author.url_fix().save()
-
 
 
 class EventHook(object):

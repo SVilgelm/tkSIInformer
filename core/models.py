@@ -2,8 +2,6 @@
 """
 Модели информера
 """
-
-
 import settings
 import sqlite3
 
@@ -29,9 +27,10 @@ create table books (
     desc,
     changes,
     is_new integer not null default 1,
-    foreign key (author_id) references authors(id) on update cascade on delete cascade
+    foreign key (author_id) references authors(id) on delete cascade
 );
 """
+
 
 def init_connection(db=None, init=False):
     global _DB
@@ -45,6 +44,7 @@ def init_connection(db=None, init=False):
         conn.executescript(INIT_SCRIPT)
     conn.commit()
 
+
 class DBObject(object):
     fields = ['id']
 
@@ -52,14 +52,11 @@ class DBObject(object):
     def table(self):
         raise NotImplemented
 
-
-
     def __getattribute__(self, item):
         if item in object.__getattribute__(self, 'fields'):
             return object.__getattribute__(self, '_data').get(item, None)
         else:
             return object.__getattribute__(self, item)
-
 
     def __setattr__(self, key, value):
         if key in self.fields:
@@ -88,15 +85,21 @@ class DBObject(object):
     def _update(self):
         sql = 'update {table:>s} set {fields:>s} where id = :id'.format(
             table=self.table,
-            fields=', '.join(['{name:>s} = :{name:>s}'.format(name=name) for name, value in self._data.items() if (value is not None and name != 'id')])
+            fields=', '.join(['{name:>s} = :{name:>s}'.format(name=name)
+                for name, value in self._data.items()
+                if (value is not None and name != 'id')
+            ])
         )
         conn.execute(sql, self._data)
 
     def _insert(self):
-        sql = 'insert into {table:>s} (id, {fields:>s}) values (null, {values:>s})'.format(**{
+        sql = 'insert into {table:>s} (id, {fields:>s}) ' \
+            'values (null, {values:>s})'.format(**{
             'table': self.table,
-            'fields': ', '.join(['{0:>s}'.format(name) for name in self.fields if name != 'id']),
-            'values': ', '.join([':{0:>s}'.format(name) for name in self.fields if name != 'id'])
+            'fields': ', '.join(['{0:>s}'.format(name)
+                for name in self.fields if name != 'id']),
+            'values': ', '.join([':{0:>s}'.format(name)
+                for name in self.fields if name != 'id'])
         })
         conn.execute(sql, self._data)
         conn.commit()
@@ -133,7 +136,6 @@ class DBObject(object):
             self.id = None
             conn.commit()
         return self
-
 
     @classmethod
     def _select(self, where, *args, **kwargs):
@@ -201,6 +203,7 @@ class Author(DBObject):
         self.url = self.url.replace('zhurnal.lib.ru', 'samlib.ru')
         return self
 
+
 class Book(DBObject):
     """
     Модель книги
@@ -222,7 +225,6 @@ class Book(DBObject):
         if 'is_new' not in kwargs:
             kwargs['is_new'] = True
         super(Book, self).__init__(**kwargs)
-
 
     @classmethod
     def get_by_author(cls, author, only_new=None):

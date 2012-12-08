@@ -12,7 +12,9 @@ from os.path import join
 
 
 class Authors(ttk.Frame):
-    def __init__(self, master=None, authors=[], caption=None, is_new_image=None,  **kw):
+    def __init__(self, master=None, authors=[], caption=None,
+        is_new_image=None, **kw
+    ):
         super().__init__(master, **kw)
         self._author = None
         self.author_changed = core.EventHook()
@@ -41,9 +43,11 @@ class Authors(ttk.Frame):
 
     def get_caption(self):
         return self._caption
+
     def set_caption(self, value):
         self._caption = value
         self.lable.config(text=self._caption)
+
     caption = property(get_caption, set_caption)
 
     def get_authors(self):
@@ -56,7 +60,9 @@ class Authors(ttk.Frame):
             for author in authors:
                 self.tree.delete(author)
         for author in self.authors:
-            item = self.tree.insert('', tkinter.END, text=str(author), values=(str(author.id)))
+            item = self.tree.insert('', tkinter.END, text=str(author),
+                values=(str(author.id))
+            )
             if len(models.Book.get_by_author(author, True)):
                 self.tree.item(item, image=self.is_new_image)
     authors = property(get_authors, set_authors)
@@ -96,9 +102,11 @@ class Books(ttk.Frame):
             selectmode=tkinter.BROWSE,
             show='tree',
         )
-        v_scroll_bar = ttk.Scrollbar(self, orient=tkinter.VERTICAL, command=self.tree.yview)
+        v_scroll_bar = ttk.Scrollbar(self, orient=tkinter.VERTICAL,
+            command=self.tree.yview
+        )
         v_scroll_bar.pack(side=tkinter.RIGHT, fill=tkinter.Y)
-        self.tree.config(yscrollcommand=v_scroll_bar.set    )
+        self.tree.config(yscrollcommand=v_scroll_bar.set)
         self.tree.pack(fill=tkinter.BOTH, expand=True)
 
         self.tree.bind('<<TreeviewSelect>>', self.selected)
@@ -106,14 +114,18 @@ class Books(ttk.Frame):
 
     def get_caption(self):
         return self._caption
+
     def set_caption(self, value):
         self._caption = value
         self.lable.config(text=self._caption)
+
     caption = property(get_caption, set_caption)
 
     def author_selected(self, author):
         books = {}
-        for book in sorted(models.Book.get_by_author(author=author), key=lambda book: book.name):
+        for book in sorted(models.Book.get_by_author(author=author),
+            key=lambda book: book.name
+        ):
             group = book.list
             if group not in books:
                 books[group] = {
@@ -130,6 +142,7 @@ class Books(ttk.Frame):
 
     def get_books(self):
         return self._books
+
     def set_books(self, value):
         self._books = value
         groups = self.tree.get_children()
@@ -139,7 +152,9 @@ class Books(ttk.Frame):
         for group in self.books:
             item = self.tree.insert('', tkinter.END, text=group, values=('#'))
             for book in self.books[group]:
-                book_item = self.tree.insert(item, tkinter.END, text=str(book), values=(str(book.id)))
+                book_item = self.tree.insert(item, tkinter.END, text=str(book),
+                    values=(str(book.id))
+                )
                 if book.is_new:
                     self.tree.item(item, open=True)
                     self.tree.item(book_item, image=self.is_new_image)
@@ -170,24 +185,30 @@ class Books(ttk.Frame):
 
 
 class TopFrame(ttk.Frame):
-    def __init__(self, master=None, check_button_image=None, del_button_image=None, add_button_image=None, **kw):
+    def __init__(self, master=None, check_button_image=None,
+        del_button_image=None, add_button_image=None, **kw
+    ):
         super().__init__(master, **kw)
         self.authors_updated = core.EventHook()
 
-        self.progress = ttk.Progressbar(self, orient=tkinter.HORIZONTAL, mode='determinate') #indeterminate
+        self.progress = ttk.Progressbar(self, orient=tkinter.HORIZONTAL,
+            mode='determinate')  # indeterminate
         self.progress.pack(side=tkinter.BOTTOM, fill=tkinter.X, expand=True)
 
-        self.check_button = ttk.Button(self, text='Проверить', image=check_button_image, compound=tkinter.LEFT)
+        self.check_button = ttk.Button(self, text='Проверить',
+            image=check_button_image, compound=tkinter.LEFT)
         self.check_button.pack(side=tkinter.LEFT, fill=tkinter.Y)
         self.check_button.bind('<Button-1>', self.check_authors)
         url_lable = ttk.Label(self, text='Адрес автора:')
         url_lable.pack(side=tkinter.LEFT, fill=tkinter.Y)
 
-        self.del_button = ttk.Button(self, text='Удалить', image=del_button_image, compound=tkinter.LEFT)
+        self.del_button = ttk.Button(self, text='Удалить',
+            image=del_button_image, compound=tkinter.LEFT)
         self.del_button.pack(side=tkinter.RIGHT, fill=tkinter.Y)
         self.del_button.bind('<Button-1>', self.del_author)
 
-        self.add_button = ttk.Button(self, text='Добавить', image=add_button_image, compound=tkinter.LEFT)
+        self.add_button = ttk.Button(self, text='Добавить',
+            image=add_button_image, compound=tkinter.LEFT)
         self.add_button.pack(side=tkinter.RIGHT, fill=tkinter.Y)
         self.add_button.bind('<Button-1>', self.add_author)
 
@@ -196,7 +217,6 @@ class TopFrame(ttk.Frame):
         author_entry.pack(fill=tkinter.BOTH, expand=True)
         author_entry.bind('<Return>', self.add_author)
         self._authors_iter = None
-
 
     def _do_check_authors(self, event=None):
         try:
@@ -212,9 +232,7 @@ class TopFrame(ttk.Frame):
             self.del_button.config(state=tkinter.NORMAL)
             self.add_button.config(state=tkinter.NORMAL)
 
-
     def check_authors(self, event=None):
-#        update_idletasks
         value = 0
         self.progress.config(maximum=len(models.Author.get()), value=value)
         self.check_button.config(state=tkinter.DISABLED)
@@ -227,14 +245,6 @@ class TopFrame(ttk.Frame):
         self.check_button.config(state=tkinter.NORMAL)
         self.del_button.config(state=tkinter.NORMAL)
         self.add_button.config(state=tkinter.NORMAL)
-
-
-#        self.check_button.config(state=tkinter.DISABLED)
-#        self._authors = core.check_all_authors()
-#        self.check_button.config(state=tkinter.DISABLED)
-#        self.del_button.config(state=tkinter.DISABLED)
-#        self.add_button.config(state=tkinter.DISABLED)
-#        self._do_check_authors()
 
     def add_author(self, event=None):
         if core.create_author(self.url.get()):
@@ -259,18 +269,30 @@ class BookInfo(ttk.Frame):
         top_frame = ttk.Frame(self)
         top_frame.pack(side=tkinter.TOP, fill=tkinter.X)
 
-        ttk.Label(top_frame, text='Изменения:').pack(side=tkinter.LEFT, fill=tkinter.Y)
+        ttk.Label(top_frame, text='Изменения:').pack(side=tkinter.LEFT,
+            fill=tkinter.Y)
         self.size = tkinter.StringVar()
-        ttk.Entry(top_frame, textvariable=self.size, state='readonly').pack(side=tkinter.RIGHT, fill=tkinter.Y)
-        ttk.Label(top_frame, text='Размер:').pack(side=tkinter.RIGHT, fill=tkinter.Y)
+        ttk.Entry(top_frame, textvariable=self.size, state='readonly').pack(
+            side=tkinter.RIGHT,
+            fill=tkinter.Y
+        )
+        ttk.Label(top_frame, text='Размер:').pack(
+            side=tkinter.RIGHT,
+            fill=tkinter.Y
+        )
         self.changes = tkinter.StringVar()
-        ttk.Entry(top_frame, textvariable=self.changes, state='readonly').pack(fill=tkinter.BOTH, expand=True)
+        ttk.Entry(top_frame, textvariable=self.changes, state='readonly').pack(
+            fill=tkinter.BOTH,
+            expand=True
+        )
         desc_frame = ttk.Frame(self)
         desc_frame.pack(fill=tkinter.BOTH, expand=True)
         style = ttk.Style()
         font = style.lookup('TTreeView', 'font')
         self.desc = tkinter.Text(desc_frame, height=3, bd=0, font=font)
-        v_scroll_bar = ttk.Scrollbar(desc_frame, orient=tkinter.VERTICAL, command=self.desc.yview)
+        v_scroll_bar = ttk.Scrollbar(desc_frame, orient=tkinter.VERTICAL,
+            command=self.desc.yview
+        )
         v_scroll_bar.pack(side=tkinter.RIGHT, fill=tkinter.Y)
         self.desc.pack(fill=tkinter.BOTH, expand=True)
         self.desc.config(yscrollcommand=v_scroll_bar.set)
@@ -295,7 +317,9 @@ def init():
     w = ttk.Panedwindow(root, orient=tkinter.HORIZONTAL)
     w.pack(fill=tkinter.BOTH, expand=True)
 
-    authors = Authors(w, caption='Авторы', authors=models.Author.get(), is_new_image=is_new_image)
+    authors = Authors(w, caption='Авторы', authors=models.Author.get(),
+        is_new_image=is_new_image
+    )
     authors.pack(side=tkinter.LEFT, fill=tkinter.Y)
     w.add(authors)
     top_frame.authors_updated += authors.set_authors

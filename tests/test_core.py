@@ -6,7 +6,9 @@ import urllib.request
 import settings
 import os
 
+
 DB = ':memory:'
+
 
 class TestCore(unittest.TestCase):
     @classmethod
@@ -15,7 +17,8 @@ class TestCore(unittest.TestCase):
 
     def test_author(self):
         urls = (
-            ("http://samlib.ru/p/pupkin_wasja_ibragimowich/indexdate.shtml", "Ясинский Анджей"),
+            ("http://samlib.ru/p/pupkin_wasja_ibragimowich/indexdate.shtml",
+                "Ясинский Анджей"),
             ("http://samlib.ru/e/elxterrus_i/", "Эльтеррус Иар"),
             ("http://samlib.ru/x/xgulliver/", "Gulliver"),
             ("http://samlib.ru/m/muhin_d_w/", "Zang"),
@@ -54,7 +57,6 @@ class TestCore(unittest.TestCase):
             def set_value(self, value):
                 self.value = value
 
-
         a = A()
         b = B()
         c = B()
@@ -79,15 +81,15 @@ class TestCore(unittest.TestCase):
     def test_import_xml(self):
         filename = os.path.join(settings.root, 'tests', 'authorts.xml')
         urls = (
-            ("http://samlib.ru/k/kontorowich_a_s/", "Конторович Александр Сергеевич"),
-            ("http://samlib.ru/k/kotow_w_n/", "Конюшевский  Владислав Николаевич"),
+            ("http://samlib.ru/k/kontorowich_a_s/",
+             "Конторович Александр Сергеевич"),
+            ("http://samlib.ru/k/kotow_w_n/",
+             "Конюшевский  Владислав Николаевич"),
         )
         core.import_from_xml(filename=filename)
         for url, name in urls:
             author = models.Author.get_by_url(url=url)
             self.assertEqual(author.name, name)
-
-
 
 
 if __name__ == '__main__':
