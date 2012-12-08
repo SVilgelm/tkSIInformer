@@ -15,7 +15,7 @@ tkinter/ttk
 =========
 
 ***Mac, Windows***
-* Скачать python: http://www.python.org/download/releases/3.2.3/
+* Скачать python: http://www.python.org/download/releases/3.3.0/
 * Установить
 
 ***Linux***
