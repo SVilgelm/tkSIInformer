@@ -13,7 +13,7 @@ class TestCore(unittest.TestCase):
     def setUpClass(cls):
         models.init_connection(DB, True)
 
-    def _test_author(self):
+    def test_author(self):
         urls = (
             ("http://samlib.ru/p/pupkin_wasja_ibragimowich/indexdate.shtml", "Ясинский Анджей"),
             ("http://samlib.ru/e/elxterrus_i/", "Эльтеррус Иар"),
