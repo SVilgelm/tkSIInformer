@@ -8,6 +8,7 @@ import urllib.request
 import urllib.parse
 import settings
 import re
+from xml.dom.minidom import parseString
 
 
 RE_AUTHOR = re.compile(r"""<body[^>]*>\s*<center>\s*<h3>(?P<author>.+?):<br>""", re.S)
@@ -140,6 +141,16 @@ def delete_author(url):
     if author:
         author.delete()
 
+
+def import_from_xml(filename):
+    f = open(filename, 'rb')
+    try:
+        text = f.read().decode('utf-8', errors='ignore').strip("\0\n \t")
+        dom = parseString(text)
+        for a in dom.getElementsByTagName('Author'):
+            create_author(a.getElementsByTagName('URL')[0].firstChild.nodeValue)
+    finally:
+        f.close()
 
 def book_read(book):
     book.is_new = 0

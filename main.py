@@ -20,6 +20,7 @@ if __name__ == '__main__':
     parser.add_argument('-f', '--url-fix', action='store_true', dest='url_fix', default=False, help="'zhurnal.lib.ru' replace to 'samlib.ru'")
     parser.add_argument('-r', '--remove-author', action='append', dest='remove_authors', default=[])
     parser.add_argument('-s', '--show', dest='show', choices=['all', 'new', 'authors'])
+    parser.add_argument('-x', '--import-xml', dest='import_xml')
     parser.add_argument('-z', '--zen-of-python', action='store_true', dest='zen', default=False)
 
     args = parser.parse_args()
@@ -38,6 +39,8 @@ if __name__ == '__main__':
         models.init_connection(init=args.init)
         if args.init:
             core.create_author("http://samlib.ru/p/pupkin_wasja_ibragimowich/indexdate.shtml")
+        if args.import_xml:
+            core.import_from_xml(args.import_xml)
 
         if args.url_fix:
             core.authors_urls_to_samlib()

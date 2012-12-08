@@ -2,6 +2,9 @@
 import unittest
 import core
 from core import models
+import urllib.request
+import settings
+import os
 
 DB = ':memory:'
 
@@ -10,7 +13,7 @@ class TestCore(unittest.TestCase):
     def setUpClass(cls):
         models.init_connection(DB, True)
 
-    def test_author(self):
+    def _test_author(self):
         urls = (
             ("http://samlib.ru/p/pupkin_wasja_ibragimowich/indexdate.shtml", "Ясинский Анджей"),
             ("http://samlib.ru/e/elxterrus_i/", "Эльтеррус Иар"),
@@ -32,6 +35,12 @@ class TestCore(unittest.TestCase):
         core.delete_author(urls[0][0])
         author = models.Author.get_by_url(urls[0][0])
         self.assertIsNone(author)
+
+        self.assertRaises(
+            urllib.request.URLError,
+            core.create_author,
+            "http://http://samlib.ru/p/pupkin_wasja_ibragimowich"
+        )
 
     def test_event_hook(self):
         class A(object):
@@ -66,6 +75,17 @@ class TestCore(unittest.TestCase):
         a.on_change(True)
         self.assertFalse(b.value)
         self.assertFalse(c.value)
+
+    def test_import_xml(self):
+        filename = os.path.join(settings.root, 'tests', 'authorts.xml')
+        urls = (
+            ("http://samlib.ru/k/kontorowich_a_s/", "Конторович Александр Сергеевич"),
+            ("http://samlib.ru/k/kotow_w_n/", "Конюшевский  Владислав Николаевич"),
+        )
+        core.import_from_xml(filename=filename)
+        for url, name in urls:
+            author = models.Author.get_by_url(url=url)
+            self.assertEqual(author.name, name)
 
 
 

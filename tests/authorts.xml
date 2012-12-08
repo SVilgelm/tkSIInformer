@@ -1,0 +1,737 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfAuthor xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Author>
+    <Id>samlib_ru_k_kontorowich_a_s</Id>
+    <timeStamp xsi:nil="true" />
+    <Texts>
+      <AuthorText>
+        <Order>0</Order>
+        <SectionName>Справочник</SectionName>
+        <Description>В указанной теме можно выкладывать комментарии  по наболевшим темам. БЕЗ перехода на личности и ругани.</Description>
+        <Genres>Критика</Genres>
+        <Link>arhiv.shtml</Link>
+        <Name>Архив интересных комментариев по обсуждаемым вопросам.</Name>
+        <Size>0</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:31.7974702+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>1</Order>
+        <SectionName>Статья</SectionName>
+        <Description />
+        <Genres>Фантастика</Genres>
+        <Link>rekon_proda.shtml</Link>
+        <Name>Продолжение к "Реконструктору"</Name>
+        <Size>21</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:31.817499+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>2</Order>
+        <SectionName>Статья</SectionName>
+        <Description />
+        <Genres>Фантастика</Genres>
+        <Link>proda_imp2.shtml</Link>
+        <Name>Продолжение к "Имперцу-2"</Name>
+        <Size>35</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:31.8375278+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>3</Order>
+        <SectionName>Глава</SectionName>
+        <Description />
+        <Genres>Фантастика</Genres>
+        <Link>rekon.shtml</Link>
+        <Name>Реконструктор</Name>
+        <Size>302</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:31.8475422+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>4</Order>
+        <SectionName>Глава</SectionName>
+        <Description />
+        <Genres>Фантастика</Genres>
+        <Link>imperec_2.shtml</Link>
+        <Name>Несмотря на достигнутые успехи  (Имперец-2)</Name>
+        <Size>84</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:31.8475422+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>5</Order>
+        <SectionName>Глава</SectionName>
+        <Description>Кусочки из шестой книги "Десант попаданцев".</Description>
+        <Genres>Фантастика</Genres>
+        <Link>desant-6.shtml</Link>
+        <Name>Десант попаданцев - 6</Name>
+        <Size>210</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:31.8475422+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>6</Order>
+        <SectionName>Интервью</SectionName>
+        <Description>Относительно нового сайта</Description>
+        <Genres />
+        <Link>hapkomat.shtml</Link>
+        <Name>Новый сайт</Name>
+        <Size>0</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:31.8475422+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>7</Order>
+        <SectionName>Глава</SectionName>
+        <Description>Здесь будет продолжение к этой книге.  Иллюстрации/приложения: 1 шт.</Description>
+        <Genres>Фантастика</Genres>
+        <Link>poka_swetit_solnce_1.shtml</Link>
+        <Name>Продолжение к  "Пока светит солнце"</Name>
+        <Size>18</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:31.8475422+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>8</Order>
+        <SectionName>Глава</SectionName>
+        <Description>Здесь будет продолжение к Паутине.  Иллюстрации/приложения: 1 шт.</Description>
+        <Genres>Фантастика</Genres>
+        <Link>proda_pautina.shtml</Link>
+        <Name>Продолжение к "Паутине"</Name>
+        <Size>12</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:31.8475422+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>9</Order>
+        <SectionName>Глава</SectionName>
+        <Description>Новая книга, та которую я обещал вскоре написать.  Иллюстрации/приложения: 1 шт.</Description>
+        <Genres>Фантастика</Genres>
+        <Link>pautina.shtml</Link>
+        <Name>Паутина</Name>
+        <Size>279</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:31.8475422+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>10</Order>
+        <SectionName>Глава</SectionName>
+        <Description>Эта книга пока не дописана.Будет или нет, сказать трудно - такие вещи сейчас особо никому и не нужны. Но не написать - не мог.</Description>
+        <Genres>Приключения</Genres>
+        <Link>poka_swetit_solnce.shtml</Link>
+        <Name>Пока светит солнце!</Name>
+        <Size>445</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:31.8475422+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>11</Order>
+        <SectionName>Глава</SectionName>
+        <Description>Вот здесь будет третья часть "пепельного" цикла  Иллюстрации/приложения: 1 шт.</Description>
+        <Genres>Фантастика</Genres>
+        <Link>pepel-3.shtml</Link>
+        <Name>Пепельный рассвет</Name>
+        <Size>390</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:31.8475422+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>12</Order>
+        <SectionName>Повесть</SectionName>
+        <Description>История создания управления В2Иллюстрации/приложения: 1 шт.</Description>
+        <Genres>Приключения</Genres>
+        <Link>provodnik.shtml</Link>
+        <Name>Проводник</Name>
+        <Size>260</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:31.8475422+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>13</Order>
+        <SectionName>Повесть</SectionName>
+        <Description>Вот тут будет третий Лорд...</Description>
+        <Genres>Фантастика</Genres>
+        <Link>lord-3.shtml</Link>
+        <Name>Кардинал в серой шинели</Name>
+        <Size>415</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:31.8475422+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>14</Order>
+        <SectionName>Повесть</SectionName>
+        <Description>Вот тут будет текст второй книги "Пепельного" циклаИллюстрации/приложения: 1 шт.</Description>
+        <Genres>Фантастика</Genres>
+        <Link>pepel_2.shtml</Link>
+        <Name>Пепельные люди</Name>
+        <Size>420</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:31.8475422+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>15</Order>
+        <SectionName>Повесть</SectionName>
+        <Description>Вот это первая книга нового циклаИллюстрации/приложения: 1 шт.</Description>
+        <Genres>Фантастика</Genres>
+        <Link>pepel.shtml</Link>
+        <Name>Пепельное небо</Name>
+        <Size>313</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:31.8475422+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>16</Order>
+        <SectionName>Повесть</SectionName>
+        <Description>Вот тут будет "Лорд в серой шинели"Иллюстрации/приложения: 1 шт.</Description>
+        <Genres>Фантастика</Genres>
+        <Link>seryi_lord.shtml</Link>
+        <Name>Лорд в серой шинели</Name>
+        <Size>225</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:31.8475422+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>17</Order>
+        <SectionName>Повесть</SectionName>
+        <Description>Вот здесь будет ЧБ-5.</Description>
+        <Genres>Фантастика</Genres>
+        <Link>chernyjbushlat-5cherhyisneg2.shtml</Link>
+        <Name>Черный снег-2. Ответный выстрел</Name>
+        <Size>547</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:31.8475422+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>18</Order>
+        <SectionName>Интервью</SectionName>
+        <Description>Здесь КАЖДЫЙ имеет право высказать ЛЮБУЮ теорию или факт, при условии, что может его доказать. Переход на личности - пост снесут без ответа. Попытка зафлудить неугодный текст, тоже ничего не даст - вынесу его в заголовок темы. В остальном  - пишите! Никто мешать не станет. Про ВСЕХ, без исключения.</Description>
+        <Genres>Литобзор</Genres>
+        <Link>fludvsjkiy.shtml</Link>
+        <Name>Место, для различного флуда. По разным темам</Name>
+        <Size>0</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:31.8575566+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>19</Order>
+        <SectionName>Повесть</SectionName>
+        <Description>Эта книга написана несколькими авторами на форуме ВВВ. Так сказать - первый опыт в подобном творчестве.Иллюстрации/приложения: 1 шт.</Description>
+        <Genres>Фантастика</Genres>
+        <Link>vtoroishans.shtml</Link>
+        <Name>"Десант "попаданцев". Второй шанс для человечества"</Name>
+        <Size>318</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:31.8575566+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>20</Order>
+        <SectionName>Повесть</SectionName>
+        <Description>Вот тут будет текст четвертой части "Черной" серииИллюстрации/приложения: 1 шт.</Description>
+        <Genres>Фантастика</Genres>
+        <Link>chernyjbushlat-4cherhyisneg.shtml</Link>
+        <Name>Черный бушлат - 4. Черный снег</Name>
+        <Size>462</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:31.8575566+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>21</Order>
+        <SectionName>Повесть</SectionName>
+        <Description>Эта книга задумывалась ОЧЕНЬ давно. Тогда, когда на дворе было серо и уныло. И подумалось - человек в чужом мире, может ли он выжить только за счет своего ума и смекалки? Обладая минимумом знаний и снаряжения. Обычный, ничем не выдающийся человек. Один из нас...Иллюстрации/приложения: 1 шт.</Description>
+        <Genres>Фантастика</Genres>
+        <Link>rycar_v_serov_shineli.shtml</Link>
+        <Name>Рыцарь в серой шинели</Name>
+        <Size>439</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:31.8575566+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>22</Order>
+        <SectionName>Интервью</SectionName>
+        <Description>Здесь можно задать вопросы, которые, возможно и не будут касатся обсуждаемых в других разделах тем.</Description>
+        <Genres />
+        <Link>voprosy.shtml</Link>
+        <Name>Вопросы к автору</Name>
+        <Size>0</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:31.8575566+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>23</Order>
+        <SectionName>Глава</SectionName>
+        <Description>Третья часть "Черного бушлата"Иллюстрации/приложения: 1 шт.</Description>
+        <Genres>Фантастика</Genres>
+        <Link>chernyjbushlat-3glawnoe-wernutsja.shtml</Link>
+        <Name>Черный бушлат-3</Name>
+        <Size>56</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:31.8575566+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>24</Order>
+        <SectionName>Глава</SectionName>
+        <Description>Продолжение "Черного бушлата".Долго сомневался, стоит ли писать. Убедили. Пишу. Прошу не считать все это очернительством реальности.Иллюстрации/приложения: 1 шт.</Description>
+        <Genres>Фантастика</Genres>
+        <Link>chernyjbushlat_2.shtml</Link>
+        <Name>Черный бушлат-2. Первозакрыватель.</Name>
+        <Size>40</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:31.8575566+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>25</Order>
+        <SectionName>Повесть</SectionName>
+        <Description>Иллюстрации/приложения: 1 шт.</Description>
+        <Genres>Фантастика</Genres>
+        <Link>chernyjbushlat.shtml</Link>
+        <Name>Черный бушлат</Name>
+        <Size>701</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:31.8575566+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+    </Texts>
+    <IsIgnored>false</IsIgnored>
+    <Comment />
+    <Category>Default</Category>
+    <IsDeleted>false</IsDeleted>
+    <Name>Конторович Александр Сергеевич</Name>
+    <URL>http://samlib.ru/k/kontorowich_a_s/indexdate.shtml</URL>
+    <UpdateDate>2012-12-08T07:14:20.451155+04:00</UpdateDate>
+    <Cached xsi:nil="true" />
+    <IsNew>false</IsNew>
+  </Author>
+  <Author>
+    <Id>samlib_ru_k_kotow_w_n</Id>
+    <timeStamp xsi:nil="true" />
+    <Texts>
+      <AuthorText>
+        <Order>0</Order>
+        <SectionName>Глава</SectionName>
+        <Description>Есть ли жизнь на Марсе, нет ли жизни на Марсе, науке это не известно.Неизвестно ей так же, существуют ли параллельные миры или это все выдумки, в научных кругах называемые гипотезами. Но, Сергей Васильевич Корнев, может дать точный ответ на этот вопрос. Нет, про Марс он ничего не знает, зато реальность существования параллельного мира, испытал на своей шкуре. Обновление от 04.12.2010</Description>
+        <Genres>Фантастика</Genres>
+        <Link>1.shtml</Link>
+        <Name>Иной вариант</Name>
+        <Size>261</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:32.1579886+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>1</Order>
+        <SectionName>Глава</SectionName>
+        <Description>Оценки и комментарии просьба оставлять в основном файле (Иной вариант)</Description>
+        <Genres>Фантастика</Genres>
+        <Link>2.shtml</Link>
+        <Name>Часть (К книге Иной Вариант)</Name>
+        <Size>45</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:32.168003+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>2</Order>
+        <SectionName>Глава</SectionName>
+        <Description>Книга ушла в редакцию. Планируемый тираж 20 000 экз. На сегодня с допечатками 25 000</Description>
+        <Genres>Фантастика</Genres>
+        <Link>name5.shtml</Link>
+        <Name>Основная миссия (книга четвертая, заключительная)</Name>
+        <Size>159</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:32.168003+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>3</Order>
+        <SectionName>Глава</SectionName>
+        <Description />
+        <Genres>Фантастика</Genres>
+        <Link>name4-1.shtml</Link>
+        <Name>Часть (к сериалу Попытка возврата)</Name>
+        <Size>0</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:32.168003+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>4</Order>
+        <SectionName>Глава</SectionName>
+        <Description>3 книга (с 20 июня пошла в магазины)Тираж 15 000. Название то же самое что и на странице СИ.- "По эту сторону фронта". На сегодняшний день с допечатками 24 000.</Description>
+        <Genres>Фантастика</Genres>
+        <Link>name3.shtml</Link>
+        <Name>По эту сторону фронта (книга третья)</Name>
+        <Size>111</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:32.168003+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>5</Order>
+        <SectionName>Глава</SectionName>
+        <Description>Комментарии к книге выкладываются в книжные комменты. А вот все остальное разрешено здесь (за исключеним матов и ничем не спровоцированного хамства). Большая просьба - не путать!!!</Description>
+        <Genres>Фантастика</Genres>
+        <Link>spor.shtml</Link>
+        <Name>Исключительно для флуда, споров и отстаивания своей точки зрения.</Name>
+        <Size>0</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:32.168003+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>6</Order>
+        <SectionName>Повесть</SectionName>
+        <Description>Все, вторая книга закончена и выправлена. Огромная благодарность Vlad02 ( однофорумчанину, земляку и отличному человеку, за помощь в правке книги)  Книга вышла в сентябре. Тираж 10 000 экз. На сегодняшний день вместе с допечатками 25 000 экз.</Description>
+        <Genres>Фантастика</Genres>
+        <Link>name1.shtml</Link>
+        <Name>Все зависит от нас  (Книга вторая)</Name>
+        <Size>83</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:32.168003+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>7</Order>
+        <SectionName>Повесть</SectionName>
+        <Description>Что делать, если почти обычного человека , из нашего времени занесло в самый что ни на есть*веселый* год. А именно 1941. Наверное для начала, попробовать просто выжить.  Книга вышла в июле. Первый тираж был 5000 экз. На сегодняшний день вместе с допечатками 27 000 экз.</Description>
+        <Genres>Фантастика</Genres>
+        <Link>noname3-3.shtml</Link>
+        <Name>Попытка возврата (Книга первая)</Name>
+        <Size>145</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:32.168003+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+    </Texts>
+    <IsIgnored>false</IsIgnored>
+    <Comment />
+    <Category>Default</Category>
+    <IsDeleted>false</IsDeleted>
+    <Name>Конюшевский В.Н.</Name>
+    <URL>http://samlib.ru/k/kotow_w_n/indexdate.shtml</URL>
+    <UpdateDate>2012-12-08T07:14:20.451155+04:00</UpdateDate>
+    <Cached xsi:nil="true" />
+    <IsNew>false</IsNew>
+  </Author>
+  <Author>
+    <Id>samlib_ru_p_pupkin_wasja_ibragimowich</Id>
+    <timeStamp xsi:nil="true" />
+    <Texts>
+      <AuthorText>
+        <Order>0</Order>
+        <SectionName>Ник</SectionName>
+        <Description>Пятая книга приключений Ника. Релиз.</Description>
+        <Genres>Фантастика, Фэнтези, Киберпанк</Genres>
+        <Link>nik5.shtml</Link>
+        <Name>Ник. Беглец</Name>
+        <Size>925</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:32.5585646+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>1</Order>
+        <SectionName>Роман</SectionName>
+        <Description>Шестая книга. В процессе работы. Главы 1-6</Description>
+        <Genres>Фантастика, Фэнтези, Киберпанк</Genres>
+        <Link>niktxt.shtml</Link>
+        <Name>Ник. Чародей</Name>
+        <Size>718</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:32.5585646+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>2</Order>
+        <SectionName>Глава</SectionName>
+        <Description>На неделю уезжаю в командировку, поэтому по вашей просьбе выкладываю то, что есть. Тут три сценки, которые войдут в 6 главу. На вики пока не выкладываю, туда выложу полную главу.</Description>
+        <Genres>Фантастика, Фэнтези</Genres>
+        <Link>nik6_scene1.shtml</Link>
+        <Name>Неоконченное продолжение</Name>
+        <Size>0</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:32.5585646+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>3</Order>
+        <SectionName>Глава</SectionName>
+        <Description>Тут кое-кто из читателей (не будем показывать пальцем на Гулевара) решил начать процесс перевода Ника на английский язык. Выкладываю сюда. С вики под это дело пока облом, как получится, так сразу заведу... В данном тексте пока никакой правки нет, как прислали мне текст, так и выкладываю...  Есть альтернативный перевод (самое начало) от уважаемого Zeks'а: http://zhurnal.lib.ru/s/sore_w_h/ С интересом жду развития событий и здесь (от Гулевара) и там. :-)))  Редактировать текст можно на вики (оба варианта): http://wiki.nickadmin.net</Description>
+        <Genres>Фантастика, Фэнтези, Киберпанк</Genres>
+        <Link>eng_nick_1.shtml</Link>
+        <Name>Nick</Name>
+        <Size>25</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:32.5585646+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>4</Order>
+        <SectionName>Воспоминания участника ВОВ</SectionName>
+        <Description>Вторая часть. Окружение под Харьковом в 1943-м, плен и побег. Текст местами дерганный, так как отец писал долго, иногда возвращался мыслями к уже написанному и не всегда следил за плавностью повествования. Я немного привел в читаемый вид оцифровку. По хорошему надо бы плотно править текст, но возможно займусь этим в будущем, когда, сам не знаю.</Description>
+        <Genres>Мемуары</Genres>
+        <Link>vov-2.shtml</Link>
+        <Name>Воспоминания участника В.О.В. Часть 2</Name>
+        <Size>242</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:32.5585646+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>5</Order>
+        <SectionName>Ник</SectionName>
+        <Description>Четвертая книга. Релиз.</Description>
+        <Genres>Фантастика, Фэнтези, Киберпанк</Genres>
+        <Link>nik-4.shtml</Link>
+        <Name>Ник. Админ</Name>
+        <Size>615</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:32.568579+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>6</Order>
+        <SectionName>Статья</SectionName>
+        <Description>В попытке придти в согласие с самим собой, своими устремлениями и понятиями об удобстве чтения книг, написал вот такую читалку на силверлайте.  02.09.2012. Вышла версия 1.0 бета   Адрес читалки: client.sireader.ru  Форум читалки: forum.sireader.ru Там можно пообсуждать конкретные вещи.</Description>
+        <Genres>Изобретательство</Genres>
+        <Link>slsireader.shtml</Link>
+        <Name>Читалка Slsireader</Name>
+        <Size>16</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:32.568579+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>7</Order>
+        <SectionName>Ник</SectionName>
+        <Description>Третья книга. Релиз.</Description>
+        <Genres>Фантастика, Фэнтези, Киберпанк</Genres>
+        <Link>nik-3.shtml</Link>
+        <Name>Ник. Стихийник</Name>
+        <Size>658</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:32.568579+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>8</Order>
+        <SectionName>Ник</SectionName>
+        <Description>Книга вторая. Релиз</Description>
+        <Genres>Фантастика, Фэнтези, Киберпанк</Genres>
+        <Link>nik-2.shtml</Link>
+        <Name>Ник. Юзер</Name>
+        <Size>1128</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:32.568579+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>9</Order>
+        <SectionName>Ник</SectionName>
+        <Description>Книга первая. Вышла в издательстве Альфа-книга в ноябре 2009г. 15тыщ.экз. + 6 тыщ.допечатка</Description>
+        <Genres>Фантастика, Фэнтези, Киберпанк</Genres>
+        <Link>nik-1.shtml</Link>
+        <Name>Ник</Name>
+        <Size>1025</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:32.568579+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>10</Order>
+        <SectionName>Воспоминания участника ВОВ</SectionName>
+        <Description>Как-то недавно разбирал бумаги своего давно умершего отца. И с печалью заметил, что его мемуары побил какой-то вредный жук, бумага стала разрушаться. Тогда я решил перевести их в электронный вид. Ну, а следуя логике, раз у меня есть свой раздел на СИ, почему бы не выложить сюда? Может кому-то будет интересно прочитать. Данные воспоминания - ощущения, мысли молодого пацана, только что закончившего школу, а на следующий день - война. Все, что он видел, чувствовал, переживал как участник этой войны - на страницах этой рукописи. Это не литературное произведение. Оно написано не писателем, а потому может кому-то показаться трудным для чтения. Я лишь выправил некоторые синтаксические и орфографические ошибки. Почерк у отца был истинно медицинский, так что некоторые слова, в основном фамилии людей и названия городов могут быть неправильно воспроизведены.  Отец писал это произведение всю свою жизнь, часто теряя тетради, восстанавливая их через много лет. И закончил за несколько месяцев до своей смерти. Поэтому иногда текст выглядит рваным. Однако лично мне было интересно читать. Здесь выложена первая часть, остальные две еще не переведены в электронку.</Description>
+        <Genres>Мемуары</Genres>
+        <Link>vov1.shtml</Link>
+        <Name>Воспоминания участника В.О.В. Часть 1</Name>
+        <Size>119</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:32.568579+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>11</Order>
+        <SectionName>Рассказ</SectionName>
+        <Description>Новогодние сопли в сиропе</Description>
+        <Genres>Проза</Genres>
+        <Link>ny.shtml</Link>
+        <Name>Новогодняя сказка</Name>
+        <Size>22</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:32.568579+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>12</Order>
+        <SectionName>Статья</SectionName>
+        <Description>Программа для получения уведомлений о появлении новых комментариев на отслеживаемых обсуждениях, просмотра их, а в перспективе и внесения комментариев.</Description>
+        <Genres>Изобретательство</Genres>
+        <Link>siim.shtml</Link>
+        <Name>Комментатор Самиздата</Name>
+        <Size>3</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:32.568579+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>13</Order>
+        <SectionName>Рассказ</SectionName>
+        <Description>Один хороший человек снова настропалил меня написать простой рассказ. Написал. Прошу сильно тапками не бить за возможные ляпы как логического характера (а они есть), натурного характера (тоже есть), так и по событиям... Мне главное было прописать эмоционально-смысловую часть. Но указания на ошибки приветствуются.</Description>
+        <Genres>Проза</Genres>
+        <Link>potapych.shtml</Link>
+        <Name>Потапыч</Name>
+        <Size>15</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:32.568579+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>14</Order>
+        <SectionName>Рассказ</SectionName>
+        <Description>Может было, может нет. А может приснилось.</Description>
+        <Genres>Проза</Genres>
+        <Link>princess.shtml</Link>
+        <Name>Принцессы</Name>
+        <Size>8</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:32.568579+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>15</Order>
+        <SectionName>Рассказ</SectionName>
+        <Description>Один очень хороший человек попросил меня рассказать сказку. Вместо сказки я решил порадовать его рассказом об Узбекистане, где я вырос и который его заинтересовал. Я не утверждаю, что так все и было. Я просто говорю, что именно так я все запомнил.</Description>
+        <Genres>Мемуары</Genres>
+        <Link>memories_defagmentation.shtml</Link>
+        <Name>Memories Defragmentation</Name>
+        <Size>16</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:32.568579+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>16</Order>
+        <SectionName>Статья</SectionName>
+        <Description>Просто программка для автоматического отслеживания обновлений любимых (или не очень) авторов. Обновление от 21 июня 2012. Версия 1.0.0.8. Я открыл отдельный сайт посвященный Информатору СИ (http://sites.google.com/site/siinformer/). Обновления брать оттуда. Здесь же будут просто анонсы обновлений и прочая информация. Там же приводятся ссылки на альтернативные информаторы, в частности под линукс:   Альтернативные информаторы</Description>
+        <Genres>Изобретательство</Genres>
+        <Link>siinformer.shtml</Link>
+        <Name>Информатор Си</Name>
+        <Size>32</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:32.568579+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>17</Order>
+        <SectionName>Статья</SectionName>
+        <Description>Отдельное место для обсуждения мыслей, навеянных Ником, но напрямую не имеющих отношения к произведению. Для баталий и вызовов на словесную дуэль.</Description>
+        <Genres>Хоррор</Genres>
+        <Link>protocols.shtml</Link>
+        <Name>Протоколы сишных мудрецов</Name>
+        <Size>1</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:32.568579+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+      <AuthorText>
+        <Order>18</Order>
+        <SectionName>Глава</SectionName>
+        <Description>Прода к шестой книге от 08.10.2012. Глава 7. Приятного чтения. Спасибо всем, кто приложил руки к вычитке предыдущих глав.  Здесь можно править текущий текст: Прода для редактирования</Description>
+        <Genres>Фантастика, Фэнтези, Киберпанк</Genres>
+        <Link>updatetxt.shtml</Link>
+        <Name>Ник. Последнее обновление</Name>
+        <Size>246</Size>
+        <SizeOld>0</SizeOld>
+        <UpdateDate>2012-12-08T07:14:32.568579+04:00</UpdateDate>
+        <Cached xsi:nil="true" />
+        <IsNew>false</IsNew>
+      </AuthorText>
+    </Texts>
+    <IsIgnored>false</IsIgnored>
+    <Comment />
+    <Category>Default</Category>
+    <IsDeleted>false</IsDeleted>
+    <Name>Ясинский Анджей</Name>
+    <URL>http://samlib.ru/p/pupkin_wasja_ibragimowich/indexdate.shtml</URL>
+    <UpdateDate>2012-12-08T07:14:20.451155+04:00</UpdateDate>
+    <Cached xsi:nil="true" />
+    <IsNew>false</IsNew>
+  </Author>
+</ArrayOfAuthor>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                

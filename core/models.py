@@ -192,7 +192,7 @@ class Author(DBObject):
         return cls.get_one(where='url=:url', url=url)
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
     def url_fix(self):
         """

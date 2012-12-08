@@ -41,4 +41,10 @@ tkinter/ttk
 ========================
 
     $ ssh -D 8080 username@server
-    $ ./main.py -cup socks5://localhost:8080 -snew
+    $ ./main.py -p socks5://localhost:8080 -csnew
+
+
+Импорт из authors.xml
+=====================
+
+    $ ./main.py -x tests/authorts.xml -snew
