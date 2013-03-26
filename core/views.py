@@ -85,15 +85,35 @@ class Authors(ttk.Frame):
 
 
 class Books(ttk.Frame):
-    def __init__(self, master=None, caption=None, is_new_image=None, **kw):
+    def __init__(self, master=None, caption=None, is_new_image=None,
+            exclude_image=None, **kw):
         super().__init__(master, **kw)
         self.book_changed = core.EventHook()
         self._books = None
-        self.lable = ttk.Label(self, anchor=tkinter.CENTER)
-        self.lable.pack(side=tkinter.TOP, fill=tkinter.X)
+        self.label = ttk.Label(self, anchor=tkinter.CENTER)
+        self.label.pack(side=tkinter.TOP, fill=tkinter.X)
         self.caption = caption
 
+        self.manage = ttk.Frame(self)
+        self.manage.pack(side=tkinter.TOP, fill=tkinter.X)
+
+        all_readed_button = ttk.Button(self.manage, text='Все прочитанные',
+            compound=tkinter.LEFT)
+        all_readed_button.pack(side=tkinter.LEFT, fill=tkinter.Y)
+        all_readed_button.bind('<Button-1>', self.all_readed)
+
+        all_exclude_button = ttk.Button(self.manage, text='Все исключить',
+            compound=tkinter.LEFT)
+        all_exclude_button.pack(side=tkinter.RIGHT, fill=tkinter.Y)
+        all_exclude_button.bind('<Button-1>', self.all_exclude)
+
+        exclude_button = ttk.Button(self.manage, text='Исключить/Вернуть',
+            compound=tkinter.LEFT)
+        exclude_button.pack(side=tkinter.RIGHT, fill=tkinter.Y)
+        exclude_button.bind('<Button-1>', self.exclude_book)
+
         self.is_new_image = is_new_image
+        self.exclude_image = exclude_image
 
         self.tree = ttk.Treeview(
             self,
@@ -117,7 +137,7 @@ class Books(ttk.Frame):
 
     def set_caption(self, value):
         self._caption = value
-        self.lable.config(text=self._caption)
+        self.label.config(text=self._caption)
 
     caption = property(get_caption, set_caption)
 
@@ -155,9 +175,11 @@ class Books(ttk.Frame):
                 book_item = self.tree.insert(item, tkinter.END, text=str(book),
                     values=(str(book.id))
                 )
-                if book.is_new:
+                if book.is_new and not book.exclude:
                     self.tree.item(item, open=True)
                     self.tree.item(book_item, image=self.is_new_image)
+                elif book.exclude:
+                    self.tree.item(book_item, image=self.exclude_image)
 
     books = property(get_books, set_books)
 
@@ -176,6 +198,29 @@ class Books(ttk.Frame):
             core.book_read(self.book)
             self.tree.item(self.tree.focus(), image=[])
             webbrowser.open_new_tab(self.book.url)
+
+    def exclude_book(self, event=None):
+        book = self.book
+        if book:
+            book.exclude = not self.book.exclude
+            book.save()
+            if book.exclude:
+                self.tree.item(self.tree.focus(), image=self.exclude_image)
+            else:
+                self.tree.item(self.tree.focus(), image=[])
+
+    def all_readed(self, event=None):
+        for group in self.books:
+            for book in self.books[group]:
+                core.book_read(book)
+        self.books = self.books
+
+    def all_exclude(self, event=None):
+        for group in self.books:
+            for book in self.books[group]:
+                book.exclude = True
+                book.save()
+        self.books = self.books
 
     @property
     def book(self):
@@ -310,6 +355,7 @@ def init():
     root.title('SIInformer')
 
     is_new_image = tkinter.PhotoImage(file=join(settings.RES_DIR, 'star.gif'))
+    exclude_image = tkinter.PhotoImage(file=join(settings.RES_DIR, 'close.gif'))
 
     top_frame = TopFrame(root)
     top_frame.pack(side=tkinter.TOP, fill=tkinter.X)
@@ -329,7 +375,10 @@ def init():
     w_books.pack(fill=tkinter.BOTH, expand=True)
     w.add(w_books)
 
-    books = Books(w_books, caption='Книги', is_new_image=is_new_image)
+    books = Books(w_books, caption='Книги',
+        is_new_image=is_new_image,
+        exclude_image=exclude_image
+    )
     books.pack(fill=tkinter.BOTH, expand=True)
     authors.author_changed += books.author_selected
     book_info = BookInfo(w_books)
