@@ -26,6 +26,8 @@ if __name__ == '__main__':
         default=False, help="'zhurnal.lib.ru' replace to 'samlib.ru'")
     parser.add_argument('-r', '--remove-author', action='append',
         dest='remove_authors', default=[])
+    parser.add_argument('-e', '--exclude-book', action='append',
+        dest='exclude_books', default=[])
     parser.add_argument('-s', '--show', dest='show',
         choices=['all', 'new', 'authors'])
     parser.add_argument('-x', '--import-xml', dest='import_xml')
@@ -63,9 +65,14 @@ if __name__ == '__main__':
         for url in args.remove_authors:
             is_console = True
             core.delete_author(url)
+
         for url in args.add_authors:
             is_console = True
             core.create_author(url)
+
+        for url in args.exclude_books:
+            is_console = True
+            core.exclude_book(url)
 
         if args.show:
             is_console = True

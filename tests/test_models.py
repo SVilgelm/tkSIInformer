@@ -95,5 +95,6 @@ class TestModels(unittest.TestCase):
         )
         self.assertRaises(sqlite3.IntegrityError, book.save)
 
+
 if __name__ == '__main__':
     unittest.main()

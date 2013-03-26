@@ -43,76 +43,92 @@ def book_change(book, name, value, changes):
         book.__setattr__(key=name, value=value)
 
 
+def exclude_book(url):
+    p = urllib.parse.urlparse(url, allow_fragments=True)
+    paths = [path for path in p.path.split('/') if path]
+    if not paths[-1].endswith('.shtml'):
+        print('{url} is not book url')
+        return
+    url = '{scheme:>s}://{netloc:>s}/{path:>s}'.format(
+        scheme=p.scheme,
+        netloc=p.netloc,
+        path='/'.join(paths)
+    )
+    book = models.Book.get_by_url(url=url)
+    print(book)
+    if book:
+        book.exclude = not book.exclude
+        book.save()
+
+
 def check_author(author):
-    try:
-        opener = urllib.request.build_opener(
-            urllib.request.HTTPRedirectHandler(),
-            urllib.request.HTTPCookieProcessor()
+    opener = urllib.request.build_opener(
+        urllib.request.HTTPRedirectHandler(),
+        urllib.request.HTTPCookieProcessor()
+    )
+    if settings.USE_PROXY:
+        scheme, user, password, host_port = urllib.request._parse_proxy(
+            settings.PROXY
         )
-        if settings.USE_PROXY:
-            scheme, user, password, host_port = urllib.request._parse_proxy(
-                settings.PROXY
+        if scheme in ('socks', 'socks4', 'socks5'):
+            host, port = host_port.split(':')
+            socks.setdefaultproxy(
+                proxytype=socks.PROXY_TYPE_SOCKS4 if scheme == 'socks4'
+                    else socks.PROXY_TYPE_SOCKS5,
+                addr=host,
+                port=int(port),
+                username=user,
+                password=password,
             )
-            if scheme in ('socks', 'socks4', 'socks5'):
-                host, port = host_port.split(':')
-                socks.setdefaultproxy(
-                    proxytype=socks.PROXY_TYPE_SOCKS4 if scheme == 'socks4'
-                        else socks.PROXY_TYPE_SOCKS5,
-                    addr=host,
-                    port=int(port),
-                    username=user,
-                    password=password,
-                )
-                socks.wrapmodule(http.client)
-            else:
-                opener.add_handler(urllib.request.ProxyHandler({
-                    scheme: settings.PROXY
-                }))
-        request = urllib.request.Request(author.url + 'indexdate.shtml')
-        response = opener.open(request)
-        if response.code == 200:
-            html = response.read().decode('cp1251')
-            m = RE_AUTHOR.findall(html)
-            name = m[0] or 'unknown name'
-            if name != author.name:
-                author.name = name
-                author.save()
-            books = {book.url: book for book in models.Book.get_by_author(
-                author=author
-            )}
-            for rbook in RE_BOOKS.findall(html):
-                m = RE_BOOK.match(rbook)
-                if m:
-                    url = author.url + m.group('url')
-                    book = books.get(url, None)
-                    list = m.group('list').lstrip('@')
-                    desc = RE_TAGS.sub('', m.group('desc') or '')
-                    if book:
-                        del(books[url])
-                        changes = []
-                        book_change(book, 'name', m.group('name'), changes)
-                        book_change(book, 'size', m.group('size'), changes)
-                        book_change(book, 'list', list, changes)
-                        book_change(book, 'desc', desc, changes)
-                        if changes:
-                            book.changes = '; '.join(changes)
-                            book.is_new = True
-                            book.save()
-                    else:
-                        models.Book(
-                            author_id=author.id,
-                            url=url,
-                            is_new=True,
-                            name=m.group('name'),
-                            size=m.group('size'),
-                            list=list,
-                            desc=desc,
-                            changes='new'
-                        ).save()
-            for book in books.values():
-                book.delete()
-    except Exception as e:
-        raise e
+            socks.wrapmodule(http.client)
+        else:
+            opener.add_handler(urllib.request.ProxyHandler({
+                scheme: settings.PROXY
+            }))
+    request = urllib.request.Request(author.url + 'indexdate.shtml')
+    response = opener.open(request)
+    if response.code == 200:
+        html = response.read().decode('cp1251')
+        m = RE_AUTHOR.findall(html)
+        name = m[0] or 'unknown name'
+        if name != author.name:
+            author.name = name
+            author.save()
+        books = {book.url: book for book in models.Book.get_by_author(
+            author=author
+        )}
+        for rbook in RE_BOOKS.findall(html):
+            m = RE_BOOK.match(rbook)
+            if m:
+                url = author.url + m.group('url')
+                book = books.get(url, None)
+                list = m.group('list').lstrip('@')
+                desc = RE_TAGS.sub('', m.group('desc') or '')
+                if book:
+                    del(books[url])
+                    changes = []
+                    book_change(book, 'name', m.group('name'), changes)
+                    book_change(book, 'size', m.group('size'), changes)
+                    book_change(book, 'list', list, changes)
+                    book_change(book, 'desc', desc, changes)
+                    if changes:
+                        book.changes = '; '.join(changes)
+                        book.is_new = True
+                        book.save()
+                else:
+                    models.Book(
+                        author_id=author.id,
+                        url=url,
+                        is_new=True,
+                        name=m.group('name'),
+                        size=m.group('size'),
+                        list=list,
+                        desc=desc,
+                        changes='new',
+                        exclude=False,
+                    ).save()
+        for book in books.values():
+            book.delete()
     return author
 
 

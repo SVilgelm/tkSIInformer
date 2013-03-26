@@ -31,22 +31,15 @@ create table books (
 );
 """
 
+INIT_UPDATES = 'create table if not exists updates (id int primary key);'
 
-def init_connection(db=None, init=False):
-    global _DB
-    _DB = settings.DB if db is None else db
-    global conn
-    conn = sqlite3.connect(_DB)
-    conn.row_factory = sqlite3.Row
-    conn.text_factory = str
-    conn.executescript(ENABLE_FOREIGN_KEYS)
-    if init:
-        conn.executescript(INIT_SCRIPT)
-    conn.commit()
+UPDATES = (
+    'alter table books add exclude boolean not null default 0;',
+)
 
 
 class DBObject(object):
-    fields = ['id']
+    fields = ('id',)
 
     @property
     def table(self):
@@ -82,24 +75,27 @@ class DBObject(object):
         for field in self.fields:
             self._data[field] = kwargs.get(field, None)
 
-    def _update(self):
+    def _update(self, is_save_id=False):
         sql = 'update {table:>s} set {fields:>s} where id = :id'.format(
             table=self.table,
             fields=', '.join(['{name:>s} = :{name:>s}'.format(name=name)
                 for name, value in self._data.items()
-                if (value is not None and name != 'id')
+                if (value is not None and (name != 'id' or is_save_id))
             ])
         )
         conn.execute(sql, self._data)
 
-    def _insert(self):
-        sql = 'insert into {table:>s} (id, {fields:>s}) ' \
-            'values (null, {values:>s})'.format(**{
+    def _insert(self, is_save_id=False):
+        fields = ', '.join(['{0:>s}'.format(name)
+            for name in self.fields if name != 'id'])
+        values = ', '.join([':{0:>s}'.format(name)
+            for name in self.fields if name != 'id'])
+        sql = 'insert into {table:>s} (id{fields:>s}) ' \
+            'values ({id:>s}{values:>s})'.format(**{
             'table': self.table,
-            'fields': ', '.join(['{0:>s}'.format(name)
-                for name in self.fields if name != 'id']),
-            'values': ', '.join([':{0:>s}'.format(name)
-                for name in self.fields if name != 'id'])
+            'fields': ', ' + fields if fields else '',
+            'values': ', ' + values if values else '',
+            'id': ':id' if is_save_id else 'null',
         })
         conn.execute(sql, self._data)
         conn.commit()
@@ -116,12 +112,12 @@ class DBObject(object):
         cur.close()
         return row['id']
 
-    def save(self):
+    def save(self, is_save_id=False):
         if self._is_new:
-            self.id = self._insert()
+            self.id = self._insert(is_save_id)
             self._is_new = False
         else:
-            self._update()
+            self._update(is_save_id)
         conn.commit()
         return self
 
@@ -138,13 +134,13 @@ class DBObject(object):
         return self
 
     @classmethod
-    def _select(self, where, *args, **kwargs):
+    def _select(cls, where, *args, **kwargs):
         if not where:
             where = ''
         else:
             where = 'where {0:>s}'.format(where)
         sql = 'select * from {table:>s} {where:>s}'.format(**{
-            'table': self.table,
+            'table': cls.table,
             'where': where
         })
         cur = conn.cursor()
@@ -183,11 +179,11 @@ class Author(DBObject):
     Модель автора
     """
     table = 'authors'
-    fields = [
+    fields = (
         'id',
         'url',
         'name',
-    ]
+    )
 
     @classmethod
     def get_by_url(cls, url):
@@ -209,7 +205,7 @@ class Book(DBObject):
     Модель книги
     """
     table = 'books'
-    fields = [
+    fields = (
         'id',
         'author_id',
         'url',
@@ -219,7 +215,8 @@ class Book(DBObject):
         'desc',
         'changes',
         'is_new',
-    ]
+        'exclude',
+    )
 
     def __init__(self, **kwargs):
         if 'is_new' not in kwargs:
@@ -234,7 +231,7 @@ class Book(DBObject):
             author_id = author.id
         where = 'author_id = :author_id'
         if only_new:
-            where += ' and is_new != 0'
+            where += ' and is_new != 0 and exclude = 0'
         return cls.get(where=where, author_id=author_id)
 
     @classmethod
@@ -243,3 +240,26 @@ class Book(DBObject):
 
     def __str__(self):
         return self.name
+
+
+class Updates(DBObject):
+    table = 'updates'
+
+
+def init_connection(db=None, init=False):
+    global _DB
+    _DB = settings.DB if db is None else db
+    global conn
+    conn = sqlite3.connect(_DB)
+    conn.row_factory = sqlite3.Row
+    conn.text_factory = str
+    conn.executescript(ENABLE_FOREIGN_KEYS)
+    if init:
+        conn.executescript(INIT_SCRIPT)
+    conn.commit()
+    conn.executescript(INIT_UPDATES)
+    for i, sql in enumerate(UPDATES):
+        if Updates.get_by_id(i) is None:
+            conn.executescript(sql)
+            Updates(id=i).save(is_save_id=True)
+    conn.commit()
