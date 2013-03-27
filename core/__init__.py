@@ -87,6 +87,8 @@ def check_author(author):
             }))
     request = urllib.request.Request(author.url + 'indexdate.shtml')
     response = opener.open(request)
+    if response.code == 404:
+        response = urllib.request.Request(author.url + 'indextitle.shtml')
     if response.code == 200:
         html = response.read().decode('cp1251')
         m = RE_AUTHOR.findall(html)
