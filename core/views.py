@@ -24,7 +24,6 @@ class Authors(ttk.Frame):
         self.caption = caption
 
         self.is_new_image = is_new_image
-
         v_scroll_bar = ttk.Scrollbar(self)
         v_scroll_bar.pack(side=tkinter.RIGHT, fill=tkinter.Y)
         self.tree = ttk.Treeview(

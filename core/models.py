@@ -192,11 +192,11 @@ class Author(DBObject):
     def __str__(self):
         return str(self.name)
 
-    def url_fix(self):
+    def url_fix(self, source='zhurnal.lib.ru', dest='samlib.ru'):
         """
         Заменяет zhurnal.lib.ru на samlib.ru
         """
-        self.url = self.url.replace('zhurnal.lib.ru', 'samlib.ru')
+        self.url = self.url.replace(source, dest)
         return self
 
 

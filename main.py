@@ -56,7 +56,8 @@ if __name__ == '__main__':
             core.import_from_xml(args.import_xml)
 
         if args.url_fix:
-            core.authors_urls_to_samlib()
+            #core.authors_urls_to_samlib()
+            core.authors_urls_to_zhurnal_lib()
         if args.check:
             is_console = True
             for author in core.check_all_authors():

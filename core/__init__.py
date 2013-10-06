@@ -202,6 +202,11 @@ def authors_urls_to_samlib():
         author.url_fix().save()
 
 
+def authors_urls_to_zhurnal_lib():
+    for author in models.Author.get():
+        author.url_fix(source='samlib.ru', dest='zhurnal.lib.ru').save()
+
+
 class EventHook(object):
     """Event pattern"""
     def __init__(self):
