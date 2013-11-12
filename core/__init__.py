@@ -139,7 +139,7 @@ def check_all_authors():
         try:
             yield check_author(author)
         except Exception as e:
-            print('Chek author "{author:>s}". {error!r:s}'.format(
+            print('Check author "{author:>s}". {error!r:s}'.format(
                 author=author.name,
                 error=e
             ))
@@ -193,8 +193,9 @@ def import_from_xml(filename):
 
 
 def book_read(book):
-    book.is_new = 0
-    book.save()
+    if book.is_new:
+        book.is_new = 0
+        book.save()
 
 
 def authors_urls_to_samlib():
