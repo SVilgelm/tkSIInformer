@@ -96,10 +96,10 @@ class Books(ttk.Frame):
         self.manage = ttk.Frame(self)
         self.manage.pack(side=tkinter.TOP, fill=tkinter.X)
 
-        all_readed_button = ttk.Button(self.manage, text='Все прочитанные',
+        mark_all_read_button = ttk.Button(self.manage, text='Все прочитанные',
             compound=tkinter.LEFT)
-        all_readed_button.pack(side=tkinter.LEFT, fill=tkinter.Y)
-        all_readed_button.bind('<Button-1>', self.all_readed)
+        mark_all_read_button.pack(side=tkinter.LEFT, fill=tkinter.Y)
+        mark_all_read_button.bind('<Button-1>', self.mark_all_read)
 
         all_exclude_button = ttk.Button(self.manage, text='Все исключить',
             compound=tkinter.LEFT)
@@ -208,7 +208,7 @@ class Books(ttk.Frame):
             else:
                 self.tree.item(self.tree.focus(), image=[])
 
-    def all_readed(self, event=None):
+    def mark_all_read(self, event=None):
         for group in self.books:
             for book in self.books[group]:
                 core.book_read(book)
