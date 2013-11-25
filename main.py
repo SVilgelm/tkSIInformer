@@ -30,6 +30,8 @@ if __name__ == '__main__':
         dest='exclude_books', default=[])
     parser.add_argument('-s', '--show', dest='show',
         choices=['all', 'new', 'updates', 'authors'])
+    parser.add_argument('-v', '--verbose', action='store_true', dest='verbose', 
+        default=False)
     parser.add_argument('-x', '--import-xml', dest='import_xml')
     parser.add_argument('-z', '--zen-of-python', action='store_true',
         dest='zen', default=False)
@@ -80,7 +82,7 @@ if __name__ == '__main__':
             only_authors = args.show == 'authors'
             only_new = args.show in ['new','updates']
             mark_as_read = args.show in ['all', 'new']
-            descriptions = args.show == 'updates'
+            descriptions = args.verbose
             for author in sorted(models.Author.get(),
                 key=lambda author: author.name
             ):
