@@ -29,7 +29,9 @@ if __name__ == '__main__':
     parser.add_argument('-e', '--exclude-book', action='append',
         dest='exclude_books', default=[])
     parser.add_argument('-s', '--show', dest='show',
-        choices=['all', 'new', 'authors'])
+        choices=['all', 'new', 'updates', 'authors'])
+    parser.add_argument('-v', '--verbose', action='store_true', dest='verbose', 
+        default=False)
     parser.add_argument('-x', '--import-xml', dest='import_xml')
     parser.add_argument('-z', '--zen-of-python', action='store_true',
         dest='zen', default=False)
@@ -78,7 +80,9 @@ if __name__ == '__main__':
         if args.show:
             is_console = True
             only_authors = args.show == 'authors'
-            only_new = args.show == 'new'
+            only_new = args.show in ['new','updates']
+            mark_as_read = args.show in ['all', 'new']
+            descriptions = args.verbose
             for author in sorted(models.Author.get(),
                 key=lambda author: author.name
             ):
@@ -96,12 +100,16 @@ if __name__ == '__main__':
                         for book in books:
                             if book.is_new:
                                 template = '\t>>> {name:>s}: {url:>}'
-                                core.book_read(book)
+                                if mark_as_read:
+                                    core.book_read(book)
                             else:
                                 template = '\t{name:>s}: {url:>}'
+                            if descriptions:
+                                template += '\n\t\t{desc:>}'
                             print(template.format(
                                 name=book.name,
-                                url=book.url)
+                                url=book.url,
+                                desc=book.desc)
                             )
         if not is_console:
             main()
