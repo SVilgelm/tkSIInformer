@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>SIInformer by SVilgelm</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>SIInformer</h1>
+        <p>Информер журнала &quot;Самиздат&quot; на python/ttk</p>
+
+        <p class="view"><a href="https://github.com/SVilgelm/tkSIInformer">View the Project on GitHub <small>SVilgelm/tkSIInformer</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/SVilgelm/tkSIInformer/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/SVilgelm/tkSIInformer/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/SVilgelm/tkSIInformer">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="tksiinformer" class="anchor" href="#tksiinformer"><span class="octicon octicon-link"></span></a>tkSIInformer</h1>
+
+<p>Информер журнала "Самиздат" на python/ttk</p>
+
+<h1>
+<a name="%D0%97%D0%B0%D0%B2%D0%B8%D1%81%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D0%B8" class="anchor" href="#%D0%97%D0%B0%D0%B2%D0%B8%D1%81%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D0%B8"><span class="octicon octicon-link"></span></a>Зависимости</h1>
+
+<p>python 3<br>
+tkinter/ttk</p>
+
+<h1>
+<a name="%D0%A3%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0" class="anchor" href="#%D0%A3%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0"><span class="octicon octicon-link"></span></a>Установка</h1>
+
+<p><strong><em>Mac, Windows</em></strong></p>
+
+<ul>
+<li>Скачать python: <a href="http://www.python.org/download/releases/3.3.0/">http://www.python.org/download/releases/3.3.0/</a>
+</li>
+<li>Установить</li>
+</ul><p><strong><em>Linux</em></strong></p>
+
+<p>Из репозитория поставить python3</p>
+
+<pre><code>$ apt-get install python3 python3-tk
+</code></pre>
+
+<h1>
+<a name="%D0%9F%D0%B5%D1%80%D0%B2%D1%8B%D0%B9-%D0%B7%D0%B0%D0%BF%D1%83%D1%81%D0%BA" class="anchor" href="#%D0%9F%D0%B5%D1%80%D0%B2%D1%8B%D0%B9-%D0%B7%D0%B0%D0%BF%D1%83%D1%81%D0%BA"><span class="octicon octicon-link"></span></a>Первый запуск</h1>
+
+<p>Эта команда создаст в локальном каталоге файл data.sqlite. Далее запускаем:</p>
+
+<pre><code>$ ./main.py
+</code></pre>
+
+<h1>
+<a name="%D0%98%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-ssh-%D0%BF%D1%80%D0%BE%D0%BA%D1%81%D0%B8" class="anchor" href="#%D0%98%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-ssh-%D0%BF%D1%80%D0%BE%D0%BA%D1%81%D0%B8"><span class="octicon octicon-link"></span></a>Использование ssh прокси</h1>
+
+<pre><code>$ ssh -D 8080 username@server
+$ ./main.py -p socks5://localhost:8080 -csnew
+</code></pre>
+
+<h1>
+<a name="%D0%98%D0%BC%D0%BF%D0%BE%D1%80%D1%82-%D0%B8%D0%B7-authorsxml" class="anchor" href="#%D0%98%D0%BC%D0%BF%D0%BE%D1%80%D1%82-%D0%B8%D0%B7-authorsxml"><span class="octicon octicon-link"></span></a>Импорт из authors.xml</h1>
+
+<pre><code>$ ./main.py -x tests/authorts.xml -snew
+</code></pre>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/SVilgelm">SVilgelm</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
