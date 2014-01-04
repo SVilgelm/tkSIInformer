@@ -35,6 +35,7 @@ INIT_UPDATES = 'create table if not exists updates (id int primary key);'
 
 UPDATES = (
     'alter table books add exclude boolean not null default 0;',
+    'alter table authors add dt datetime',
 )
 
 
@@ -75,17 +76,17 @@ class DBObject(object):
         for field in self.fields:
             self._data[field] = kwargs.get(field, None)
 
-    def _update(self, is_save_id=False):
+    def _update(self, save_id=False):
         sql = 'update {table:>s} set {fields:>s} where id = :id'.format(
             table=self.table,
             fields=', '.join(['{name:>s} = :{name:>s}'.format(name=name)
                 for name, value in self._data.items()
-                if (value is not None and (name != 'id' or is_save_id))
+                if (value is not None and (name != 'id' or save_id))
             ])
         )
         conn.execute(sql, self._data)
 
-    def _insert(self, is_save_id=False):
+    def _insert(self, save_id=False):
         fields = ', '.join(['{0:>s}'.format(name)
             for name in self.fields if name != 'id'])
         values = ', '.join([':{0:>s}'.format(name)
@@ -95,7 +96,7 @@ class DBObject(object):
             'table': self.table,
             'fields': ', ' + fields if fields else '',
             'values': ', ' + values if values else '',
-            'id': ':id' if is_save_id else 'null',
+            'id': ':id' if save_id else 'null',
         })
         conn.execute(sql, self._data)
         conn.commit()
@@ -112,12 +113,12 @@ class DBObject(object):
         cur.close()
         return row['id']
 
-    def save(self, is_save_id=False):
+    def save(self, save_id=False):
         if self._is_new:
-            self.id = self._insert(is_save_id)
+            self.id = self._insert(save_id)
             self._is_new = False
         else:
-            self._update(is_save_id)
+            self._update(save_id)
         conn.commit()
         return self
 
@@ -183,6 +184,7 @@ class Author(DBObject):
         'id',
         'url',
         'name',
+        'dt'
     )
 
     @classmethod
@@ -261,5 +263,5 @@ def init_connection(db=None, init=False):
     for i, sql in enumerate(UPDATES):
         if Updates.get_by_id(i) is None:
             conn.executescript(sql)
-            Updates(id=i).save(is_save_id=True)
+            Updates(id=i).save(save_id=True)
     conn.commit()

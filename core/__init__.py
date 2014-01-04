@@ -3,6 +3,7 @@
 Основые функции и объекты системы
 """
 from core import models, socks
+import time
 import http.client
 import urllib.request
 import urllib.parse
@@ -62,6 +63,8 @@ def exclude_book(url):
 
 
 def check_author(author):
+    if author.dt is not None and time.time() - author.dt < 600:
+        return
     opener = urllib.request.build_opener(
         urllib.request.HTTPRedirectHandler(),
         urllib.request.HTTPCookieProcessor()
@@ -86,9 +89,10 @@ def check_author(author):
                 scheme: settings.PROXY
             }))
     request = urllib.request.Request(author.url + 'indexdate.shtml')
-    response = opener.open(request)
+    response = opener.open(request, timeout=5)
     if response.code == 404:
-        response = urllib.request.Request(author.url + 'indextitle.shtml')
+        request = urllib.request.Request(author.url + 'indextitle.shtml')
+        response = opener.open(request, timeout=5)
     if response.code == 200:
         html = response.read().decode('cp1251')
         m = RE_AUTHOR.findall(html)
@@ -131,6 +135,8 @@ def check_author(author):
                     ).save()
         for book in books.values():
             book.delete()
+        author.dt = time.time()
+        author.save()
     return author
 
 

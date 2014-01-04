@@ -63,7 +63,9 @@ if __name__ == '__main__':
         if args.check:
             is_console = True
             for author in core.check_all_authors():
-                pass
+                if author:
+                    print(author, 'OK')
+                # pass
 
         for url in args.remove_authors:
             is_console = True
