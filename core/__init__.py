@@ -4,6 +4,7 @@
 """
 from core import models, socks
 import http.client
+import html.parser
 import urllib.request
 import urllib.parse
 import settings
@@ -85,31 +86,33 @@ def check_author(author):
             opener.add_handler(urllib.request.ProxyHandler({
                 scheme: settings.PROXY
             }))
+    html_parser = html.parser.HTMLParser()
     request = urllib.request.Request(author.url + 'indexdate.shtml')
     response = opener.open(request)
     if response.code == 404:
         response = urllib.request.Request(author.url + 'indextitle.shtml')
     if response.code == 200:
-        html = response.read().decode('cp1251')
-        m = RE_AUTHOR.findall(html)
-        name = m[0] or 'unknown name'
+        index_html = response.read().decode('cp1251')
+        m = RE_AUTHOR.findall(index_html)
+        name = html_parser.unescape(m[0] or 'unknown name')
         if name != author.name:
             author.name = name
             author.save()
         books = {book.url: book for book in models.Book.get_by_author(
             author=author
         )}
-        for rbook in RE_BOOKS.findall(html):
+        for rbook in RE_BOOKS.findall(index_html):
             m = RE_BOOK.match(rbook)
             if m:
                 url = author.url + m.group('url')
                 book = books.get(url, None)
                 list = m.group('list').lstrip('@')
-                desc = RE_TAGS.sub('', m.group('desc') or '')
+                desc = html_parser.unescape(RE_TAGS.sub('', m.group('desc') or ''))
+                name = html_parser.unescape(m.group('name'))
                 if book:
                     del(books[url])
                     changes = []
-                    book_change(book, 'name', m.group('name'), changes)
+                    book_change(book, 'name', name, changes)
                     book_change(book, 'size', m.group('size'), changes)
                     book_change(book, 'list', list, changes)
                     book_change(book, 'desc', desc, changes)
@@ -122,7 +125,7 @@ def check_author(author):
                         author_id=author.id,
                         url=url,
                         is_new=True,
-                        name=m.group('name'),
+                        name=name,
                         size=m.group('size'),
                         list=list,
                         desc=desc,
