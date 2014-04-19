@@ -44,3 +44,7 @@ tkinter/ttk
 =====================
 
     $ ./main.py -x tests/authorts.xml -snew
+
+Запуск тестов
+=============
+$ python3 -m unittest
