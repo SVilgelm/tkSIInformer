@@ -55,6 +55,7 @@ class TestModels(unittest.TestCase):
             url='http://samlib.ru/p/pupkin_wasja_ibragimowich/updatetxt.shtml',
             name="Ник. Последнее обновление",
             list="Глава",
+            exclude=False,
             desk="Прода к шестой книге от 09.08.2012. Глава 6. "
                  "Приятного чтения. Спасибо всем, кто приложил руки к вычитке"
                  " предыдущих глав. Здесь можно править текущий текст: Прода"
@@ -68,6 +69,7 @@ class TestModels(unittest.TestCase):
                 'updatetxt2.shtml',
             name="Ник. Последнее обновление",
             list="Глава",
+            exclude=False,
             desk="Прода к шестой книге от 09.08.2012. Глава 6. Приятного"
                  " чтения. Спасибо всем, кто приложил руки к вычитке "
                  "предыдущих глав. Здесь можно править текущий текст: "
@@ -88,6 +90,7 @@ class TestModels(unittest.TestCase):
             url='http://samlib.ru/p/pupkin_wasja_ibragimowich/updatetxt.shtml',
             name="Ник. Последнее обновление",
             list="Глава",
+            exclude=False,
             desk="Прода к шестой книге от 09.08.2012. Глава 6. Приятного"
                  " чтения. Спасибо всем, кто приложил руки к вычитке "
                  "предыдущих глав. Здесь можно править текущий текст: "

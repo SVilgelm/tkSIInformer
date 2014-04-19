@@ -6,6 +6,7 @@ from core import models, socks
 import time
 import http.client
 import html.parser
+import urllib.error
 import urllib.request
 import urllib.parse
 import settings
@@ -195,8 +196,14 @@ def import_from_xml(filename):
         text = f.read().decode('utf-8', errors='ignore').strip("\0\n \t")
         dom = parseString(text)
         for a in dom.getElementsByTagName('Author'):
-            create_author(a.getElementsByTagName('URL')
-                [0].firstChild.nodeValue)
+            url = a.getElementsByTagName('URL')[0].firstChild.nodeValue
+            try:
+                create_author(url)
+            except urllib.error.HTTPError as e:
+                print('Add author by url"{url:>s}". {error!r:s}'.format(
+                    url=url,
+                    error=e
+                ))
     finally:
         f.close()
 
