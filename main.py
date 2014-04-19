@@ -42,6 +42,8 @@ if __name__ == '__main__':
         import this
         exit()
 
+    settings.VERBOSE = args.verbose
+
     settings.DB = args.db
     settings.USE_PROXY = args.use_proxy or args.proxy is not None
     if settings.USE_PROXY and args.proxy:
@@ -63,9 +65,8 @@ if __name__ == '__main__':
         if args.check:
             is_console = True
             for author in core.check_all_authors():
-                if author:
+                if author and settings.VERBOSE:
                     print(author, 'OK')
-                # pass
 
         for url in args.remove_authors:
             is_console = True
@@ -84,10 +85,8 @@ if __name__ == '__main__':
             only_authors = args.show == 'authors'
             only_new = args.show in ['new','updates']
             mark_as_read = args.show in ['all', 'new']
-            descriptions = args.verbose
             for author in sorted(models.Author.get(),
-                key=lambda author: author.name
-            ):
+                                 key=lambda author: author.name):
                 if only_authors:
                     print('{name:>s}: {url:>}'.format(name=author.name,
                         url=author.url))
@@ -106,7 +105,7 @@ if __name__ == '__main__':
                                     core.book_read(book)
                             else:
                                 template = '\t{name:>s}: {url:>}'
-                            if descriptions:
+                            if settings.VERBOSE:
                                 template += '\n\t\t{desc:>}'
                             print(template.format(
                                 name=book.name,
