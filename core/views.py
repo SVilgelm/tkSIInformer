@@ -53,6 +53,7 @@ class Authors(ttk.Frame):
         return self._authors
 
     def set_authors(self, value):
+        value = filter(lambda author: author.name, value)
         self._authors = sorted(value, key=lambda author: author.name)
         authors = self.tree.get_children()
         if authors:
