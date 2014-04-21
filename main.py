@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
-# -*- coding:utf-8 -*-
-from core import models, views
-import settings
 import core
+from core import models, views
+import logging
 import os
+import settings
+
+
+logger = logging.getLogger(__name__)
 
 
 def main():
@@ -19,6 +22,8 @@ if __name__ == '__main__':
     parser.add_argument('-p', '--proxy', dest='proxy', default=None,
         help="./main.py -p socks://localhost:8080")
     parser.add_argument('-c', '--check', action='store_true', dest='check',
+        default=False)
+    parser.add_argument('--debug', action='store_true', dest='debug',
         default=False)
     parser.add_argument('-a', '--add-author', action='append',
         dest='add_authors', default=[])
@@ -44,6 +49,8 @@ if __name__ == '__main__':
 
     settings.VERBOSE = args.verbose
 
+    logging.basicConfig(level='DEBUG' if args.debug else 'ERROR')
+
     settings.DB = args.db
     settings.USE_PROXY = args.use_proxy or args.proxy is not None
     if settings.USE_PROXY and args.proxy:
@@ -60,13 +67,13 @@ if __name__ == '__main__':
             core.import_from_xml(args.import_xml)
 
         if args.url_fix:
-            #core.authors_urls_to_samlib()
+            # core.authors_urls_to_samlib()
             core.authors_urls_to_zhurnal_lib()
         if args.check:
             is_console = True
             for author in core.check_all_authors():
-                if author and settings.VERBOSE:
-                    print(author, 'OK')
+                if author:
+                    logger.info('%s OK', author)
 
         for url in args.remove_authors:
             is_console = True
@@ -97,7 +104,7 @@ if __name__ == '__main__':
                     )
                     if books:
                         print('{name:>s}: {url:>}'.format(name=author.name,
-                            url=author.url))
+                                                          url=author.url))
                         for book in books:
                             if book.is_new:
                                 template = '\t>>> {name:>s}: {url:>}'

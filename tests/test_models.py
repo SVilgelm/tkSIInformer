@@ -1,7 +1,6 @@
-# -*- coding: utf-8 -*-
-import unittest
-import sqlite3
 from core import models
+import sqlite3
+import unittest
 
 
 DB = ':memory:'

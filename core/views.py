@@ -1,14 +1,13 @@
-# -*- coding: utf-8 -*-
 """
 Виджеты и вьюшки
 """
+import core
+from core import models
+from os.path import join
+import settings
 import tkinter
 from tkinter import ttk
-from core import models
-import core
 import webbrowser
-import settings
-from os.path import join
 
 
 class Authors(ttk.Frame):

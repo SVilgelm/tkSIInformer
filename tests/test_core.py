@@ -1,10 +1,9 @@
-# -*- coding: utf-8 -*-
-import unittest
 import core
 from core import models
-import urllib.request
-import settings
 import os
+import settings
+import unittest
+import urllib.request
 
 
 DB = ':memory:'

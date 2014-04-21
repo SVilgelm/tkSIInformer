@@ -1,17 +1,20 @@
-# -*- coding: utf-8 -*-
 """
 Основые функции и объекты системы
 """
 from core import models, socks
-import time
+import logging
 import http.client
 import html.parser
-import urllib.error
-import urllib.request
-import urllib.parse
-import settings
 import re
+import settings
+import time
+import urllib.error
+import urllib.parse
+import urllib.request
 from xml.dom.minidom import parseString
+
+
+logger = logging.getLogger(__name__)
 
 
 RE_AUTHOR = re.compile(
@@ -66,6 +69,7 @@ def exclude_book(url):
 
 def check_author(author):
     if author.dt is not None and time.time() - author.dt < 600:
+        logger.debug('%(author)s SKIP', {'author': author})
         return
     opener = urllib.request.build_opener(
         urllib.request.HTTPRedirectHandler(),
@@ -149,10 +153,8 @@ def check_all_authors():
         try:
             yield check_author(author)
         except Exception as e:
-            print('Check author "{author:>s}". {error!r:s}'.format(
-                author=author.name,
-                error=e
-            ))
+            logger.warning('Check author "%(author)s". %(error)s',
+                           {'author': author.name, 'error': e})
 
 
 def create_author(url):
@@ -191,8 +193,7 @@ def delete_author(url):
 
 
 def import_from_xml(filename):
-    f = open(filename, 'rb')
-    try:
+    with open(filename, 'rb') as f:
         text = f.read().decode('utf-8', errors='ignore').strip("\0\n \t")
         dom = parseString(text)
         for a in dom.getElementsByTagName('Author'):
@@ -200,12 +201,8 @@ def import_from_xml(filename):
             try:
                 create_author(url)
             except urllib.error.HTTPError as e:
-                print('Add author by url"{url:>s}". {error!r:s}'.format(
-                    url=url,
-                    error=e
-                ))
-    finally:
-        f.close()
+                logger.warning('Add author by url "%(url)s". %(error)s',
+                               {'url': url, 'error': e})
 
 
 def book_read(book):
