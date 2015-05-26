@@ -11,3 +11,5 @@ USE_PROXY = False
 RES_DIR = os.path.join(root, 'res')
 
 VERBOSE = False
+
+TIMEOUT = 10

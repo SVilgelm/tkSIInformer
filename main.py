@@ -35,11 +35,13 @@ if __name__ == '__main__':
         dest='exclude_books', default=[])
     parser.add_argument('-s', '--show', dest='show',
         choices=['all', 'new', 'updates', 'authors'])
-    parser.add_argument('-v', '--verbose', action='store_true', dest='verbose', 
+    parser.add_argument('-v', '--verbose', action='store_true', dest='verbose',
         default=False)
     parser.add_argument('-x', '--import-xml', dest='import_xml')
     parser.add_argument('-z', '--zen-of-python', action='store_true',
         dest='zen', default=False)
+    parser.add_argument('-t', '--timeout', type=int, dest='timeout',
+                        default=10)
 
     args = parser.parse_args()
 
@@ -55,6 +57,8 @@ if __name__ == '__main__':
     settings.USE_PROXY = args.use_proxy or args.proxy is not None
     if settings.USE_PROXY and args.proxy:
         settings.PROXY = args.proxy
+
+    settings.TIMEOUT = args.timeout
 
     is_console = False
     try:

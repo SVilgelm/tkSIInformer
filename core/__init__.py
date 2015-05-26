@@ -96,10 +96,10 @@ def check_author(author):
             }))
     html_parser = html.parser.HTMLParser()
     request = urllib.request.Request(author.url + 'indexdate.shtml')
-    response = opener.open(request, timeout=5)
+    response = opener.open(request, timeout=settings.TIMEOUT)
     if response.code == 404:
         request = urllib.request.Request(author.url + 'indextitle.shtml')
-        response = opener.open(request, timeout=5)
+        response = opener.open(request, timeout=settings.TIMEOUT)
     if response.code == 200:
         index_html = response.read().decode('cp1251')
         m = RE_AUTHOR.findall(index_html)
